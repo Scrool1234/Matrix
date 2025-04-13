@@ -77,5 +77,39 @@ class Matrix {
         return new Matrix(newMatrix);
     }
 
+    //Умножение матриц
+    public Matrix prodMatrix(Matrix matrix) {
+        if(this.countCol == matrix.countRow) {
+            double[][] newMatrix = new double[this.countRow][matrix.countCol];
+            for (int i = 0; i < this.countRow; i++) {
+                for (int j = 0; j < matrix.countCol; j++) {
+                    for (int g = 0; g < this.countCol; g++) {
+                        newMatrix[i][j] += this.matrix[i][g] * matrix.getMatrix()[g][j];
+                    }
+                }
+            }
+            return new Matrix(newMatrix);
+        }
+        return null;
+    }
 
+    //Вывод матрицы
+    public void showMatrix() {
+        System.out.print("[");
+        System.out.println();
+        for(int i = 0; i < countRow; ++i) {
+            System.out.print("[");
+            for(int j = 0; j < countCol; ++j) {
+                if(j != countCol - 1) {
+                    System.out.print(matrix[i][j] + " ");
+                }
+                else {
+                    System.out.print(matrix[i][j] + "]");
+                }
+            }
+            System.out.println();
+        }
+        System.out.println("]");
+        System.out.println();
+    }
 }
